@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
-  def '/songs' do
-    
+  get '/songs' do
+    @songs = Song.all
+    erb :'/songs/index'
   end
 end
