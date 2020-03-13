@@ -2,7 +2,9 @@
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
-    <h2>Song Name: <%=@song.name%> <button onclick="window.location.href = '/songs/<%=@song.slug%>/edit';">Edit Song</button> </h2>
+    <h2>Song Name: <%=@song.name%>
+       <button onclick="window.location.href = '/songs/<%=@song.slug%>/edit';">Edit Song</button>
+
     <h3>Artist: <%if @song.artist%>
 
       <a href="/artists/<%=@song.artist.slug%>"><%=@song.artist.name%></a></h3>
@@ -14,3 +16,7 @@
         <li><a href="/genres/<%=genre.slug%>"><%=genre.name%></a></li>
       </ul>
     <%end%>
+    <form action="/songs/<%=@song.slug%>" method="post">
+     <input type="hidden" name="_method" value="DELETE">
+     <input type="submit" value="Delete Song">
+ </form></h2>

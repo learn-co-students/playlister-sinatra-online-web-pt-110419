@@ -65,4 +65,10 @@ class SongsController < ApplicationController
 
   end
 
+  delete '/songs/:slug' do
+    @song = Song.find_by_slug(params[:slug].to_s)
+    @song.delete
+    redirect "songs"
+  end
+
 end
