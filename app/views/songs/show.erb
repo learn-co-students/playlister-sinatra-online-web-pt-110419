@@ -1,0 +1,16 @@
+<h1>Song Information Page</h1>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+    <h2>Song Name: <%=@song.name%> <button onclick="window.location.href = '/songs/<%=@song.slug%>/edit';">Edit Song</button> </h2>
+    <h3>Artist: <%if @song.artist%>
+
+      <a href="/artists/<%=@song.artist.slug%>"><%=@song.artist.name%></a></h3>
+      <%end%>
+
+    <h3>Genres:<br></h3>
+    <%@song.genres.each do |genre|%>
+      <ul>
+        <li><a href="/genres/<%=genre.slug%>"><%=genre.name%></a></li>
+      </ul>
+    <%end%>
